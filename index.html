@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Amazing Time Zone Adventure</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#eaf5ff;color:#26354b;
+ font-family:"Trebuchet MS",Arial,sans-serif;text-align:center
+}
+header{
+ padding:30px 15px;background:linear-gradient(120deg,#164c9b,#55b7e8);
+ color:white
+}
+h1{font-size:clamp(27px,5vw,43px);margin:5px}
+h2{color:#2467a6}
+p{line-height:1.65}
+.container{max-width:1000px;margin:auto;padding:12px}
+.card{
+ background:white;padding:22px;margin:18px 0;
+ border-radius:22px;box-shadow:0 5px 18px #234b7418
+}
+.en{color:#1767a5}
+.de{color:#b45c27}
+.emoji{font-size:45px}
+.divider{border-top:2px dashed #ddd;margin:20px 0}
+button,select{
+ padding:12px 17px;border:0;border-radius:12px;
+ background:#2878c8;color:white;font-size:16px;
+ margin:5px;cursor:pointer
+}
+button:hover{background:#15569a}
+button:focus-visible,select:focus-visible{
+ outline:3px solid #f4a62a;outline-offset:3px
+}
+select{background:#edf5ff;color:#234}
+.small{font-size:13px;color:#69788a}
+.globe{
+ width:210px;height:210px;margin:25px auto;
+ border-radius:50%;position:relative;overflow:hidden;
+ background:linear-gradient(90deg,#123e85,#1689bd,#123e85);
+ box-shadow:inset -20px -10px 35px #001d48aa,
+ 0 0 35px #54bce9aa;
+ animation:float 3s ease-in-out infinite
+}
+.globe:before{
+ content:"";position:absolute;inset:0;
+ background:repeating-linear-gradient(
+  90deg,transparent 0 25px,#a5e4ff33 26px 28px
+ );
+ animation:spin 8s linear infinite
+}
+.globe:after{
+ content:"🌎";font-size:150px;position:absolute;
+ left:50%;top:50%;transform:translate(-50%,-50%);
+ animation:spin 20s linear infinite
+}
+@keyframes float{
+ 0%,100%{transform:translateY(0)}
+ 50%{transform:translateY(-12px)}
+}
+@keyframes spin{to{background-position:200px 0}}
+.sun{
+ font-size:48px;display:inline-block;
+ animation:sunrise 4s ease-in-out infinite
+}
+@keyframes sunrise{
+ 0%,100%{transform:translateY(8px) rotate(-10deg)}
+ 50%{transform:translateY(-10px) rotate(10deg)}
+}
+.map-wrap{overflow-x:auto}
+svg{width:100%;min-width:580px;height:auto}
+.zone{opacity:.48}
+.land{fill:#f8f1ce;stroke:#526d75;stroke-width:1.4}
+.zone-label{font-size:11px;fill:#142d49;font-weight:bold}
+.legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.legend span{padding:7px 11px;border-radius:8px;font-size:13px}
+.clock{
+ background:#e8f5ff;border-radius:16px;padding:16px;
+ margin:10px auto;max-width:400px
+}
+.time{font-size:36px;font-weight:bold;color:#145b9b}
+.feedback{font-size:18px;font-weight:bold;min-height:30px}
+footer{padding:25px;color:#63748a}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="sun">☀️</div>
+ <h1>🌍 My Amazing Time Zone Adventure!</h1>
+ <h2 style="color:white">Meine tolle Zeitzonen-Reise!</h2>
+ <p>Let's travel around the world and discover time!</p>
+ <p>Reisen wir um die Welt und entdecken die Uhrzeit!</p>
+</header>
+
+<main class="container">
+
+<section class="card">
+ <div class="emoji">🚀🌎</div>
+ <h2>1. Meet our beautiful Earth!</h2>
+ <h2>1. Lerne unsere schöne Erde kennen!</h2>
+
+ <div class="globe"></div>
+
+ <p class="en">
+ Our Earth is like a giant ball. It spins around and around.
+ It takes about 24 hours to spin once!
+ </p>
+ <p class="de">
+ Unsere Erde ist wie ein riesiger Ball.
+ Sie dreht sich immer weiter.
+ Für eine Umdrehung braucht sie ungefähr 24 Stunden!
+ </p>
+ <div class="divider"></div>
+ <p>🌞 Day = Tag &nbsp; | &nbsp; 🌙 Night = Nacht</p>
+</section>
+
+<section class="card">
+ <div class="emoji">🔦🌍</div>
+ <h2>2. Why do we have day and night?</h2>
+ <h2>2. Warum gibt es Tag und Nacht?</h2>
+
+ <p class="en">
+ Imagine a flashlight is the Sun.
+ The side facing the light has daytime.
+ The other side has nighttime!
+ </p>
+ <p class="de">
+ Stell dir vor, eine Taschenlampe ist die Sonne.
+ Die Seite, die beleuchtet wird, hat Tag.
+ Auf der anderen Seite ist Nacht!
+ </p>
+
+ <p>☀️ LIGHT = DAY / TAG</p>
+ <p>🌙 DARK = NIGHT / NACHT</p>
+</section>
+
+<section class="card">
+ <div class="emoji">🕒🌍</div>
+ <h2>3. What is a time zone?</h2>
+ <h2>3. Was ist eine Zeitzone?</h2>
+
+ <p class="en">
+ A time zone is a part of the world where people use
+ the same clock time.
+ When we wake up in Germany, children in another
+ country might still be sleeping!
+ </p>
+ <p class="de">
+ Eine Zeitzone ist ein Gebiet auf der Erde,
+ in dem die Menschen die gleiche Uhrzeit haben.
+ Wenn wir in Deutschland aufwachen,
+ schlafen Kinder in einem anderen Land vielleicht noch!
+ </p>
+</section>
+
+<section class="card">
+ <h2>4. 🌎 The WHOLE WORLD Time Zone Map</h2>
+ <h2>4. Die Zeitzonenkarte der GANZEN WELT</h2>
+
+ <p class="en">
+ The Earth has 24 main time zones.
+ Each one is approximately one hour apart.
+ </p>
+ <p class="de">
+ Die Erde hat 24 Hauptzeitzonen.
+ Jede ist ungefähr eine Stunde unterschiedlich.
+ </p>
+
+ <div class="map-wrap">
+ <svg viewBox="0 0 900 470" role="img"
+ aria-label="Schematic world time zone map, from UTC minus 12 to UTC plus 12">
+ <defs>
+  <clipPath id="world">
+   <rect x="30" y="35" width="840" height="365" rx="12"/>
+  </clipPath>
+ </defs>
+ <rect x="30" y="35" width="840" height="365" rx="12"
+ fill="#bce6f5" stroke="#476e91" stroke-width="2"/>
+
+ <g clip-path="url(#world)">
+ <g id="bands"></g>
+ <g class="land">
+ <!-- North America -->
+ <path d="M55 105 L100 75 155 65 190 85 220 100 250 90
+ 265 115 240 135 230 165 205 175 190 205 170 220
+ 155 200 130 185 110 155 80 145 Z"/>
+ <path d="M185 205 L215 195 240 215 255 250 240 290
+ 220 310 208 285 195 250 Z"/>
+ <!-- South America -->
+ <path d="M250 275 L290 270 320 290 310 335
+ 295 380 275 425 255 390 245 345 230 310 Z"/>
+ <!-- Europe and Asia -->
+ <path d="M400 105 L435 80 480 75 510 90 550 80
+ 590 95 630 90 665 105 700 90 750 115
+ 790 135 820 160 800 185 765 180 735 205
+ 710 200 685 175 650 185 620 165 590 180
+ 560 160 530 180 500 155 470 170 450 150
+ 420 155 395 135 Z"/>
+ <!-- Africa -->
+ <path d="M420 190 L460 175 510 185 535 215
+ 520 260 495 320 465 350 445 310 430 260 410 225 Z"/>
+ <!-- India and Southeast Asia -->
+ <path d="M570 185 L610 195 620 235 600 265
+ 585 230 Z"/>
+ <path d="M640 205 L680 210 700 230 680 250
+ 655 240 Z"/>
+ <!-- Japan -->
+ <path d="M735 170 L750 185 745 210 733 205 Z"/>
+ <!-- Australia -->
+ <path d="M700 285 L750 275 790 300 785 330
+ 755 350 715 335 690 310 Z"/>
+ <!-- Greenland -->
+ <path d="M285 65 L325 48 350 65 340 110
+ 310 125 285 100 Z"/>
+ </g>
+ <g id="labels"></g>
+ </g>
+ <text x="450" y="20" text-anchor="middle" font-size="15"
+ fill="#24557b" font-weight="bold">WEST ← UTC TIME → EAST</text>
+ <text x="30" y="425" font-size="13" fill="#24557b">180° W</text>
+ <text x="450" y="425" text-anchor="middle" font-size="13"
+ fill="#24557b">0° (Prime Meridian)</text>
+ <text x="870" y="425" text-anchor="end" font-size="13"
+ fill="#24557b">180° E</text>
+ <text x="450" y="455" text-anchor="middle" font-size="12"
+ fill="#52677b">Simplified longitude-based map • Vereinfache Karte</text>
+ </svg>
+ </div>
+ <div class="legend">
+ <span style="background:#c9e9ff">🌊 UTC− zones</span>
+ <span style="background:#ffe2a5">🌞 UTC+ zones</span>
+ <span style="background:#e4e8f2">🌐 UTC 0</span>
+ </div>
+ <p class="small">
+ This is a simplified teaching map based on longitude,
+ not an exact map of political time-zone borders.
+ Real time zones can bend around countries and borders.
+ Some places use half-hour or 45-minute offsets.
+ </p>
+ <p class="small">
+ Dies ist eine vereinfachte Lernkarte nach Längengraden,
+ keine genaue Karte der Ländergrenzen.
+ Manche Orte haben halbe oder dreiviertel Stunden Unterschied.
+ </p>
+</section>
+
+<section class="card">
+ <h2>5. 🌍 Let's visit different countries!</h2>
+ <h2>5. Besuchen wir verschiedene Länder!</h2>
+
+ <p class="en">Imagine it is 12:00 noon in Germany during winter.</p>
+ <p class="de">Stell dir vor, es ist im Winter 12:00 Uhr in Deutschland.</p>
+
+ <div class="clock">
+ <p>🇩🇪 Germany / Deutschland</p>
+ <div class="time">12:00</div>
+ </div>
+ <div class="clock">
+ <p>🇬🇧 United Kingdom / Großbritannien</p>
+ <div class="time">11:00</div>
+ </div>
+ <div class="clock">
+ <p>🇮🇳 India / Indien</p>
+ <div class="time">16:30</div>
+ </div>
+ <div class="clock">
+ <p>🇯🇵 Japan</p>
+ <div class="time">20:00</div>
+ </div>
+ <div class="clock">
+ <p>🇺🇸 New York / New York</p>
+ <div class="time">06:00</div>
+ </div>
+ <p class="small">Example assumes standard winter time in Germany.</p>
+</section>
+
+<section class="card">
+ <h2>6. 🎮 Play with the world clock!</h2>
+ <h2>6. Spiele mit der Weltzeituhr!</h2>
+
+ <p class="en">Choose a country to see its time when Germany is at 12:00 in winter.</p>
+ <p class="de">Wähle ein Land und entdecke die Uhrzeit, wenn es in Deutschland im Winter 12:00 Uhr ist.</p>
+
+ <select id="country" onchange="showTime()">
+ <option value="0">🇩🇪 Germany / Deutschland</option>
+ <option value="-1">🇬🇧 United Kingdom / Großbritannien</option>
+ <option value="4.5">🇮🇳 India / Indien</option>
+ <option value="8">🇯🇵 Japan</option>
+ <option value="-6">🇺🇸 New York</option>
+ <option value="2">🇪🇬 Egypt / Ägypten</option>
+ <option value="10">🇦🇺 Sydney / Sydney</option>
+ <option value="-9">🇺🇸 Los Angeles</option>
+ </select>
+
+ <div class="clock">
+ <div class="time" id="clock">12:00</div>
+ <p id="clockText">Germany / Deutschland</p>
+ </div>
+</section>
+
+<section class="card">
+ <h2>7. ➕ Learn PLUS and MINUS!</h2>
+ <h2>7. Lerne PLUS und MINUS!</h2>
+
+ <div class="emoji">➕ ➖</div>
+ <p class="en">
+ PLUS means add hours. MINUS means take away hours.
+ </p>
+ <p class="de">
+ PLUS bedeutet: Stunden dazurechnen.
+ MINUS bedeutet: Stunden abziehen.
+ </p>
+ <div class="clock">
+ <h3>12:00 + 1 hour = 13:00</h3>
+ <h3>12:00 − 1 hour = 11:00</h3>
+ </div>
+</section>
+
+<section class="card">
+ <div class="emoji">🏆</div>
+ <h2>8. Super Time Zone Quiz!</h2>
+ <h2>8. Das große Zeitzonen-Quiz!</h2>
+
+ <div id="quiz">
+  <h3 id="question"></h3>
+  <div id="answers"></div>
+  <p class="feedback" id="feedback"></p>
+  <p id="score"></p>
+  <button onclick="nextQuestion()" id="next">Next question / Nächste Frage</button>
+ </div>
+</section>
+
+<section class="card">
+ <div class="emoji">⭐🌍⭐</div>
+ <h2>You are a Time Zone Explorer!</h2>
+ <h2>Du bist ein Zeitzonen-Entdecker!</h2>
+ <p class="en">
+ Remember: Earth spins, the Sun shines, and people around
+ the world have different times!
+ </p>
+ <p class="de">
+ Denk daran: Die Erde dreht sich, die Sonne scheint
+ und auf der Welt gibt es verschiedene Uhrzeiten!
+ </p>
+ <h1>🌍 Great job! Super gemacht! 🎉</h1>
+</section>
+
+</main>
+
+<footer>
+ Made with ❤️ for little explorers!
+ <br>Gemacht mit ❤️ für kleine Entdecker!
+</footer>
+
+<script>
+// Draw 24 longitude-based time-zone bands
+const bands=document.getElementById("bands");
+const labels=document.getElementById("labels");
+const colors=["#9bc9ed","#83d4cf","#f4d58d","#f2b7a1"];
+for(let i=0;i<24;i++){
+ const x=30+i*35;
+ const rect=document.createElementNS("http://www.w3.org/2000/svg","rect");
+ rect.setAttribute("x",x);
+ rect.setAttribute("y",35);
+ rect.setAttribute("width",35);
+ rect.setAttribute("height",365);
+ rect.setAttribute("fill",colors[i%4]);
+ rect.setAttribute("class","zone");
+ bands.appendChild(rect);
+
+ if(i%3===0){
+  const t=document.createElementNS("http://www.w3.org/2000/svg","text");
+  t.setAttribute("x",x+17);
+  t.setAttribute("y",55);
+  t.setAttribute("text-anchor","middle");
+  t.setAttribute("class","zone-label");
+  t.textContent="UTC"+(i<12?"−"+(12-i):i===12?" 0":"+"+(i-12));
+  labels.appendChild(t);
+ }
+}
+
+// Clock converter: Germany winter = UTC+1
+function showTime(){
+ const offset=Number(document.getElementById("country").value);
+ let minutes=(12*60+offset*60)%1440;
+ if(minutes<0)minutes+=1440;
+ const h=Math.floor(minutes/60);
+ const m=minutes%60;
+ document.getElementById("clock").textContent=
+ String(h).padStart(2,"0")+":"+String(m).padStart(2,"0");
+ document.getElementById("clockText").textContent=
+ document.getElementById("country").selectedOptions[0].text;
+}
+showTime();
+
+// Quiz
+const questions=[
+ {q:"Germany is at 12:00. UK winter time is...?",
+  a:["11:00","13:00","15:00"],c:0,
+  d:"Germany is one hour ahead of the UK in winter!"},
+ {q:"What does UTC+1 mean?",
+  a:["One hour less","One hour more","Same time"],c:1,
+  d:"PLUS means we add one hour!"},
+ {q:"How many hours does Earth take to spin once?",
+  a:["12 hours","24 hours","48 hours"],c:1,
+  d:"One full spin takes about 24 hours!"},
+ {q:"Germany is at 12:00 in winter. India is at...?",
+  a:["11:00","12:30","16:30"],c:2,
+  d:"India is 4 hours and 30 minutes ahead!"},
+ {q:"What happens when our side of Earth faces the Sun?",
+  a:["Night","Day","Snow"],c:1,
+  d:"The side facing the Sun has daytime!"},
+ {q:"What is a time zone?",
+  a:["A place using the same clock time","A planet","A type of clock"],c:0,
+  d:"People in a time zone share the same standard local time!"}
+];
+let current=0,points=0,answered=false;
+function drawQuestion(){
+ answered=false;
+ const q=questions[current];
+ document.getElementById("question").textContent=
+ (current+1)+". "+q.q;
+ document.getElementById("feedback").textContent="";
+ document.getElementById("score").textContent=
+ "⭐ Score: "+points+" / "+questions.length;
+ document.getElementById("next").textContent=
+ current===questions.length-1?"See my result / Ergebnis":"Next question / Nächste Frage";
+ const area=document.getElementById("answers");
+ area.innerHTML="";
+ q.a.forEach((a,i)=>{
+  const b=document.createElement("button");
+  b.textContent=a;
+  b.onclick=()=>answer(i);
+  area.appendChild(b);
+ });
+}
+function answer(i){
+ if(answered)return;
+ answered=true;
+ if(i===questions[current].c){
+  points++;
+  document.getElementById("feedback").textContent=
+  "🎉 Correct! Richtig! "+questions[current].d;
+ }else{
+  document.getElementById("feedback").textContent=
+  "😊 Good try! Gut versucht! "+questions[current].d;
+ }
+ document.getElementById("score").textContent=
+ "⭐ Score: "+points+" / "+questions.length;
+}
+function nextQuestion(){
+ if(!answered)return;
+ current++;
+ if(current>=questions.length){
+  document.getElementById("quiz").innerHTML=
+  "<h2>🎉 You finished! Geschafft!</h2>"+
+  "<div class='emoji'>🏆🌍</div>"+
+  "<h2>Your score: "+points+" / "+questions.length+"</h2>"+
+  "<h2>Dein Ergebnis: "+points+" / "+questions.length+"</h2>"+
+  "<p>"+(points>=5?"Amazing! Fantastisch!":"Well done! Weiter üben!")+"</p>"+
+  "<button onclick='location.reload()'>Play again / Nochmal spielen</button>";
+  return;
+ }
+ drawQuestion();
+}
+drawQuestion();
+</script>
+</body>
+</html>
